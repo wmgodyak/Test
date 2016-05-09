@@ -1,0 +1,78 @@
+#header {
+   padding: 70px 0 20px 0 ;
+   background-color: #C2DBD5;
+   .header-button {
+   display: block;
+      width: 55%;
+      margin: 5px 0;
+   }
+   img {
+      position: relative;
+      top:-35px;
+      width: 90%;
+    height: 195px;
+   }
+}
+#admin-page {
+
+   .styled-select  {
+      position: relative;
+      top: 2px;
+      background: #DDDDDD;
+      padding: 0px 30px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      height: 45px;
+      text-align: center;
+   }
+
+   .sorted-block {
+      display: inline-block;
+      float: right;
+   }
+   .checked-block {
+      display: inline-block;
+   }
+   h1 {
+      text-align: center;
+      margin: 20px;
+   }
+   padding-top: 50px;
+   .pagination {
+      padding: 10px 16px;
+   }
+   i {
+      padding: 5px;
+      color: red;
+   }
+}
+#content {
+   padding: 30px 0 ;
+   .g-recaptcha {
+      display: inline-block;
+      width: 49%;
+   }
+   .main-submit-button {
+      position: relative;
+      right: -18%;
+      display: inline-block!important;
+      width: 49%!important;
+   }
+   textarea {
+      width: 100%;
+   }
+   .btn-primary {
+
+      width: 65%;
+   }
+}
+body {
+   a {
+         text-decoration: none;
+
+   }
+   background-color: #E5EFFF;
+   i {
+      cursor: pointer;
+   }
+}
