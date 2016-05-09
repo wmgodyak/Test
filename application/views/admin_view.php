@@ -69,7 +69,7 @@
                             echo  "<td id='user-ip'>". $array['ip'] . "\n" . "</td>";
                             echo  "<td id='user-brouser'>". $array['brouser'] . "\n" . "</td>";
                             echo  "<td id='user-data'>". $array['data'] . "\n" . "</td>";
-                            echo  "<td class=' delete'><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></td>";
+                            echo  "<td class=' delete' ><i class=\"fa fa-trash-o\" aria-hidden=\"true\"></i></td>";
                             echo  "<td class='user-update'><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"  data-toggle=\"modal\" data-target=\"#myModal\" ></i> </td>";
                             echo "</tr>";
                         }
@@ -86,7 +86,7 @@
                             }
                         } ?>
                     <a href="/"><button class="btn btn-primary btn-lg active"> На Головну</button></a>
-                    <a href="main/logOut"><button  class=" btn btn-primary btn-lg active"> log-out</button></a>
+                    <a href="main/logOut"><button  class=" btn btn-primary btn-lg active"> logOut</button></a>
                     
                     <div class="sorted-block">
                     <button  class=" btn btn-primary btn-lg active sort-by-descending"> Сортувати :</button>

@@ -62,7 +62,7 @@ class Controller_Main extends Controller {
                 $json['success'] = true;
                 $json['result'] = "Пост записаний в базу даних!";
             }else {
-                $json['success'] = true;
+                $json['success'] = false;
                 $json['result'] = "Підтвердіть що ви не робот!";
             }
 

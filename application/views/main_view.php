@@ -10,7 +10,7 @@
 
 <?php  if ( isset($_SESSION['IS_ADMIN']) && $_SESSION['IS_ADMIN'] == 'true') { ?>
     
-    <a href="main/logOut"><button  class="header-button btn btn-primary btn-lg active"> log-out</button></a>
+    <a href="main/logOut"><button  class="header-button btn btn-primary btn-lg active"> logOut</button></a>
     <a href="admin_page"><button class="header-button btn btn-primary btn-lg active"> До адмінки </button></a>
 <?php }else { ?>
 

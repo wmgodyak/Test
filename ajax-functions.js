@@ -9,8 +9,12 @@ $("#form").on('submit',function() {
         success: function(data) {
             if (data.success){
                 alert(data.result);
-                location.reload() ;            }
-        },
+                location.reload() ;
+            }else  {
+                alert(data.result);
+            }
+        }
+        ,
         error: function() {
             alert("Your message wasn't sent!");
         }
@@ -19,24 +23,27 @@ $("#form").on('submit',function() {
 });
 
 $(".delete").click(function(){
-    var  id =   $(this).closest(".costumer-record").find("#user-id").html();
+    var confirmText = "Are you sure you want to delete this object?";
+    if(confirm(confirmText)) {
+        var id = $(this).closest(".costumer-record").find("#user-id").html();
         $.ajax({
-        type: "post", 
-        dataType: "json",
-        url: "admin_page/deleteUser",
-        data: { delete: id },
-        success: function(data) {
-            if (data.success){
-                alert( "User with id = " + id + " was deleted");
-                location.reload();
-            }else  {
-                alert( "User " + id + "doesn't exist");
+            type: "post",
+            dataType: "json",
+            url: "admin_page/deleteUser",
+            data: {delete: id},
+            success: function (data) {
+                if (data.success) {
+                    alert("User with id = " + id + " was deleted");
+                    location.reload();
+                } else {
+                    alert("User " + id + "doesn't exist");
+                }
+            },
+            error: function () {
+                alert("Your message wasn't sent!");
             }
-        },
-        error: function() {
-            alert("Your message wasn't sent!");
-        }
-    });
+        });
+    }
     return false;
 });
 

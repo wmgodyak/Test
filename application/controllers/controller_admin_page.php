@@ -10,8 +10,9 @@ class Controller_Admin_Page extends Controller {
 
     function action_index()
     {
-        $data = $this->model->get_started_db_data();
-
+        $pageResult = $this->model->getCountPage();
+        $sortedArray = $this->model-> getSortedVal();
+        $data = $this->model->get_started_db_data($pageResult,$sortedArray,5);
         $this->view->generate('admin_view.php',$data);
     }
 
@@ -19,13 +20,16 @@ class Controller_Admin_Page extends Controller {
     {
         if ( isset($_POST['value']) && isset($_POST['way']) ) {
 
-            $_SESSION['sortedVal']=$_POST['value'];
-            $_SESSION['sortedWay']=$_POST['way'];
+            $_SESSION['sortedVal'] = $_POST['value'];
+            $_SESSION['sortedWay'] = $_POST['way'];
+            $json['success'] = true;
+        }else {
+            $json['success'] = false;
         }
-
+        
         $json['success'] = true;
-        $json['value'] = $_SESSION['sortedVal '];
-        $json['way'] =  $_SESSION['sortedWay '];
+        /*$json['value'] = $_SESSION['sortedVal'];
+        $json['way'] =  $_SESSION['sortedWay ']*/;
         echo json_encode($json);
 
     }

@@ -13,9 +13,10 @@ class Model_Main extends Model {
         $userBrouser = $brouser;
 
         $pdo = new Pdo_Object();
-        $pdo->query("INSERT INTO users (name , email, website, text, ip,  brouser  )
- VALUES ('".$userName."', '".$userEmail."','".$userWebsite."','".$userText."', '".$userIP."', '".$userBrouser."');");
-
+        /*$pdo->query("INSERT INTO users (name , email, website, text, ip,  brouser  )
+        VALUES ('".$userName."', '".$userEmail."','".$userWebsite."','".$userText."', '".$userIP."', '".$userBrouser."');");*/
+        $stmt = $pdo->prepare("INSERT INTO users (name , email, website, text, ip,  brouser ) VALUES ( ?, ?, ?, ?, ?, ? ) ");
+        $stmt->execute(array( $userName, $userEmail ,$userWebsite , $userText, $userIP, $userBrouser));
     }
     
     public function checkLogin() {
