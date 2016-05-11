@@ -1,10 +1,10 @@
-
+//save post
 $("#form").on('submit',function() { 
     var form_data = $(this).serialize(); 
     $.ajax({
         type: "post", 
         dataType: "json",
-        url: "main/savePost", 
+        url: "main/save_post",
         data: form_data,
         success: function(data) {
             if (data.success){
@@ -22,14 +22,15 @@ $("#form").on('submit',function() {
     return false;
 });
 
+//delete user
 $(".delete").click(function(){
-    var confirmText = "Are you sure you want to delete this object?";
+    var confirmText = "Are you sure you want to delete?";
     if(confirm(confirmText)) {
         var id = $(this).closest(".costumer-record").find("#user-id").html();
         $.ajax({
             type: "post",
             dataType: "json",
-            url: "admin_page/deleteUser",
+            url: "admin_page/delete",
             data: {delete: id},
             success: function (data) {
                 if (data.success) {
@@ -47,7 +48,7 @@ $(".delete").click(function(){
     return false;
 });
 
-
+//update user
 $(".costumer-record").click(function(){
     var  id =   $(this).closest(".costumer-record").find("#user-id").html();
     var text =  $(this).closest(".costumer-record").find("#user-text").html();
@@ -55,12 +56,14 @@ $(".costumer-record").click(function(){
     $("#user-update  textarea[name='text-update']").val(text);
 });
 
+
+//update user
 $("#user-update").on('submit',function() { 
     var form_data = $(this).serialize(); 
     $.ajax({
         type: "post", 
         dataType: "json",
-        url: "admin_page/updateUser",
+        url: "admin_page/update",
         data: form_data,
         success: function(data) {
             if (data.success){
@@ -76,7 +79,7 @@ $("#user-update").on('submit',function() {
     return false;
 });
 
-
+//pagination
 $(".pagination").click(function(){
     var page =  $(this).html();
     //alert (page);
@@ -84,7 +87,7 @@ $(".pagination").click(function(){
     $.ajax({
         type: "post",
         dataType: "json",
-        url: "admin_page/setNumbersOfPage", 
+        url: "admin_page/set_numbers_of_page",
         data:  { page: page },
         success: function(data) {
             location.reload() ;
@@ -96,6 +99,7 @@ $(".pagination").click(function(){
     return false;
 });
 
+//sorting
 $(".sort-by-descending").click(function(){
     var  getSortedWay =   $("#sorted-way option:selected ").val();
     var  getSortedValue =   $("#sorted-value option:selected").val();
