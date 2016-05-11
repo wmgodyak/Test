@@ -2,21 +2,25 @@
 class Controller_Admin_Page extends Controller {
 
 
-    function __construct()
+    public function __construct()
     {
         $this->model =  new  Model_Admin_Page();
         $this->view = new View();
     }
-
-    function action_index()
+    
+    //Default rendering page
+   public function action_index()
     {
-        $pageResult = $this->model->getCountPage();
-        $sortedArray = $this->model-> getSortedVal();
-        $data = $this->model->get_started_db_data($pageResult,$sortedArray,5);
+        $pageResult = $this->model-> get_currently_page();
+        $sortedArray = $this->model-> get_sorted_val();
+        $userQuantity = $this->model-> get_user_quantity();
+        $limit = 5 ;
+        $data = $this->model->get_started_db_data($pageResult, $sortedArray, $limit, $userQuantity);
         $this->view->generate('admin_view.php',$data);
     }
 
-    function action_sorted()
+    //Sorted posts
+    public  function action_sorted()
     {
         if ( isset($_POST['value']) && isset($_POST['way']) ) {
 
@@ -34,11 +38,12 @@ class Controller_Admin_Page extends Controller {
 
     }
 
-    function action_deleteUser()
+    //Delete user
+    public function action_delete()
     {
         if (isset($_POST['delete'])) {
             $id = $_POST['delete'];
-            $result = $this->model->deleteUser($id);
+            $result = $this->model->delete_user($id);
             $json['success'] = $result;
             echo json_encode($json);
         }
@@ -48,7 +53,8 @@ class Controller_Admin_Page extends Controller {
         }
     }
 
-    function action_setNumbersOfPage()
+    //Page pagination
+    public  function action_set_numbers_of_page()
     {
         if ( isset($_POST['page'])) {
             $_SESSION['countPage'] = $_POST['page'];
@@ -62,12 +68,12 @@ class Controller_Admin_Page extends Controller {
         echo json_encode($json);
     }
 
-
-    function action_updateUser()
+    //Update user
+   public function action_update()
     {
         if ( isset($_POST['text-update'])) {
 
-            $this->model->updateUser($_POST['id'] , $_POST['text-update']);
+            $this->model->update_user($_POST['id'] , $_POST['text-update']);
             $json['success'] = true;
         }
         else {

@@ -2,26 +2,27 @@
 class Controller_Main extends Controller {
 
 
-    function __construct()
+  public function __construct()
     {
 
         $this->model =  new Model_Main();
         $this->view = new View();
     }
 
-    function action_index() {
+    //Default rendering page
+   public function action_index() {
         $this->view->generate('main_view.php');
     }
-    
-    
-    function action_logOut() {
+
+    //Logout
+    public function action_log_out() {
         unset($_SESSION['IS_ADMIN']);
         header('location: /');
     }
 
-    
-    function action_checkLogin () {
-        $result = $this->model->checkLogin();
+  //Checkout login
+    public  function action_check_login () {
+        $result = $this->model->check_login();
         if ($result) {
             header('location: /admin_page');
         }else {
@@ -30,44 +31,32 @@ class Controller_Main extends Controller {
 
     }
 
-    
-    function action_savePost () {
 
-        if (isset($_POST["g-recaptcha-response"])){
+    //Save post
+    public function action_save_post () {
 
-            //check  reCaptcha
-            //$secret = "6LeMWxQTAAAAAJTan8DBLs80b96C2BDzRc2WbGJV";
-            $secret = "	6Lc0bR8TAAAAAJ9CJd0axNGq6ldFSMnDHoZoZeg7";
+       $isCaptcha = $this->model->is_reCaptcha();
 
-            //empty response
-            $response = null;
+            if ($isCaptcha) {
 
-            // check $secret key
-            $reCaptcha = new ReCaptcha($secret);
-
-            //check  reCaptcha
-            if ($_POST["g-recaptcha-response"]) {
-                $response = $reCaptcha->verifyResponse(
-                    $_SERVER["REMOTE_ADDR"],
-                    $_POST["g-recaptcha-response"]
-                );
-            }
-
-            if ($response != null && $response->success) {
-
+                $userName = $_POST['name'];
+                $userEmail = $_POST['email'];
+                $userWebsite = $_POST['website'];
+                $userText = $_POST['text'];
                 $ip = $this->model->get_ip();
-                $brouser = $this->model->getBrouser();
-                $this->model->savePost($ip , $brouser);
+                $brouser = $this->model->get_brouser();
+                
+                
+                $this->model->save_post($ip , $brouser, $userName, $userEmail, $userWebsite, $userText );
 
                 $json['success'] = true;
-                $json['result'] = "Пост записаний в базу даних!";
+                $json['result'] = "Your post was added";
             }else {
                 $json['success'] = false;
-                $json['result'] = "Підтвердіть що ви не робот!";
+                $json['result'] = "Confirm that you are not a robot!";
             }
 
             echo json_encode($json);
-        }
         
     }
     

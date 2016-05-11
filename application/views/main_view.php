@@ -10,12 +10,12 @@
 
 <?php  if ( isset($_SESSION['IS_ADMIN']) && $_SESSION['IS_ADMIN'] == 'true') { ?>
     
-    <a href="main/logOut"><button  class="header-button btn btn-primary btn-lg active"> logOut</button></a>
+    <a href="main/log_out"><button  class="header-button btn btn-primary btn-lg active"> logout</button></a>
     <a href="admin_page"><button class="header-button btn btn-primary btn-lg active"> До адмінки </button></a>
 <?php }else { ?>
 
 
-    <form class="form-inline" action="main/checkLogin" method="POST">
+    <form class="form-inline" action="main/check_login" method="POST">
         <div class="form-group">
             <label class="sr-only" for="exampleInputEmail3">Login</label>
             <input type="text"  name="login" class="form-control" id="exampleInputEmail3" placeholder="Login" required>

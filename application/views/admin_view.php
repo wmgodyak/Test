@@ -86,7 +86,7 @@
                             }
                         } ?>
                     <a href="/"><button class="btn btn-primary btn-lg active"> На Головну</button></a>
-                    <a href="main/logOut"><button  class=" btn btn-primary btn-lg active"> logOut</button></a>
+                    <a href="main/log_out"><button  class=" btn btn-primary btn-lg active"> logout</button></a>
                     
                     <div class="sorted-block">
                     <button  class=" btn btn-primary btn-lg active sort-by-descending"> Сортувати :</button>
