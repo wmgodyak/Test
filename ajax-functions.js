@@ -30,7 +30,7 @@ $(".delete").click(function(){
         $.ajax({
             type: "post",
             dataType: "json",
-            url: "admin_page/delete",
+            url: "adminPage/delete",
             data: {delete: id},
             success: function (data) {
                 if (data.success) {
@@ -63,7 +63,7 @@ $("#user-update").on('submit',function() {
     $.ajax({
         type: "post", 
         dataType: "json",
-        url: "admin_page/update",
+        url: "adminPage/update",
         data: form_data,
         success: function(data) {
             if (data.success){
@@ -87,7 +87,7 @@ $(".pagination").click(function(){
     $.ajax({
         type: "post",
         dataType: "json",
-        url: "admin_page/set_numbers_of_page",
+        url: "adminPage/setNumbersOfPage",
         data:  { page: page },
         success: function(data) {
             location.reload() ;
@@ -114,7 +114,7 @@ $(".sort-by-descending").click(function(){
     $.ajax({
         type: "post",
         dataType: "json",
-        url: "admin_page/sorted",
+        url: "adminPage/sorted",
         data:  { value: getSortedValue , way: getSortedWay },
         success: function(data) {
             //alert (data.value + " " + data.way);
